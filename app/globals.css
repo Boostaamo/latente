@@ -54,10 +54,11 @@ main { padding: 2rem 0 3rem; min-height: 60vh; }
 
 .form { max-width: 34rem; margin-top: 2rem; display: grid; gap: 1rem; }
 .field { display: grid; gap: .35rem; }
-.field input[type="text"], .field input[type="email"], .field textarea {
+.field input[type="text"], .field input[type="email"], .field input[type="tel"], .field select, .field textarea {
   font: inherit; padding: .6rem .75rem; border: 1px solid var(--color-border); border-radius: var(--radius); width: 100%;
 }
 .field.checkbox { grid-template-columns: auto 1fr; align-items: start; gap: .6rem; }
+.form .small { font-size: .9rem; margin: 0; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .notice { padding: 1rem; background: var(--color-surface); border-radius: var(--radius); }
 .error { color: #b00020; }

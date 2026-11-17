@@ -19,4 +19,6 @@ Datan tuottaa Latenten skripti `Kiinteistöhaku/skriptit/taloyhtio_json.py` Driv
 - Kartoituspyyntö kulkee sivuston tavallisen liidilomakkeen kautta (`source = taloyhtio/<tunniste>`).
 
 ## Ei tässä vaiheessa
-- Käyntien kirjaus myyntiputkeen (kiinnostuspisteet) ja interaktiivinen säästölaskuri. CLAUDE.md:n mukaan Bistek/AI Softarobotit -raja tarkistetaan ennen toteutusta.
+- Interaktiivinen säästölaskuri: Bistek toteuttaa (Hannu 17.11.2026).
+- Käyntien kirjaus myyntiputkeen (kiinnostuspisteet): toteuttaja päättämättä. CLAUDE.md:n mukaan Bistek/AI Softarobotit -raja tarkistetaan ennen toteutusta.
+- Säästöt näytetään arvioina (Hannu 17.11.2026).

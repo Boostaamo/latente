@@ -20,10 +20,5 @@
   "lomake_otsikko": "Pyydä kartoitus",
   "lomake_teksti": "Jätä yhteystietosi, niin sovimme kartoituksen ajankohdan. Kartoitus ei sido taloyhtiötä mihinkään.",
   "lomake_nappi": "Lähetä kartoituspyyntö",
-  "tulossa": [
-    { "otsikko": "Suunnittelu ja toteutus", "teksti": "Päätöksen jälkeen tähän tulevat projektin aikataulu, suunnitelmat ja yhteyshenkilöt." },
-    { "otsikko": "Asukkaille", "teksti": "Asukastiedotteet, asennustöiden aikataulu ja ohjeet uuden lämmityksen ja kesäviilennyksen käyttöön." },
-    { "otsikko": "Käytössä", "teksti": "Käyttöönoton jälkeen tässä näkyvät mitattu säästö, kulutus ja huoltohistoria." }
-  ],
   "tietosuoja": "Tämä sivu on tehty taloyhtiönne käyttöön. Sivu ei käytä evästeitä eikä seurantaa, eikä se näy hakukoneissa. Arvio perustuu julkisiin tietoihin eikä ole sitova tarjous."
 }

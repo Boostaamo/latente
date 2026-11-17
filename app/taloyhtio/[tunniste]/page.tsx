@@ -154,12 +154,6 @@ export default async function TaloyhtioPage({ params }: Props) {
 
       <section className="band">
         <div className="in kohde-osio">
-          <p className="label">Tulossa samaan osoitteeseen</p>
-          <div className="who">
-            {T.tulossa.map((x) => (
-              <div key={x.otsikko}><h3>{x.otsikko}</h3><p>{x.teksti}</p></div>
-            ))}
-          </div>
           <p className="muted kohde-pieni">{T.tietosuoja} Tiedot päivitetty {t.paivitetty.split("-").reverse().map(Number).join(".")}.</p>
         </div>
       </section>

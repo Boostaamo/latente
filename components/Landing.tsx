@@ -210,7 +210,12 @@ export default function Landing() {
           </div>
           <div className="stack">
             {contact.people.map((p) => (
-              <div className="card" key={p.name}><h3>{p.name}</h3><p className="muted">{p.role}</p></div>
+              <div className="card" key={p.name}>
+                <h3>{p.name}</h3>
+                {p.role && <p className="muted">{p.role}</p>}
+                {p.email && <p><a href={`mailto:${p.email}`}>{p.email}</a></p>}
+                {p.phone && <p><a href={`tel:+358${p.phone.replace(/\s/g, "").replace(/^0/, "")}`}>{p.phone}</a></p>}
+              </div>
             ))}
             <div className="card">
               <h3>{site.legalName}</h3>

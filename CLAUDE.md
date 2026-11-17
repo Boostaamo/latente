@@ -32,7 +32,7 @@ Prosessi: Dimman verkkosivuprosessi (dimma-30…37), alkaen briefistä (Drive: L
 - Konversiopiste: kartoitus- ja yhteydenottopyyntö (analytiikassa `generate_lead`).
 - Ei palvelunimiä (GFC, Grofi, Dimma ym.) sivulla. Ei "A Boostaamo Company" -merkkiä eikä ekosysteemilinkkejä: Latente ei kuulu konserniin (Hannu 17.11.2026).
 - Lukuja vain todennettuina; pilotin 17 % ei käytetä, säästöväitteet tarkistetaan ennen julkaisua. Ei sanaa "ainoa", ei käyttövesilupausta.
-- Tietosuoja: rekisterinpitäjä Latente Oy, tietosuojaosoite Latenten oma, liidien säilytys 24 kk, GA 14 kk.
+- Tietosuoja: rekisterinpitäjä Latente Oy, tietosuoja- ja yhteysosoite väliaikaisesti hannu@dimma.fi (myöhemmin Latenten oma latente.fi-osoite), liidien säilytys 24 kk, GA 14 kk.
 - Ei henkilötietoja eikä liidilistan yhteystietoja repoon. Kohdesivuille (/taloyhtio/[tunniste]) vain rakennuksen julkiset tiedot ja säästöarvio.
 - Kohdesivukäyntien kirjaus myyntiputkeen ja säästölaskuri: tarkista Bistek/AI Softarobotit -raja ennen toteutusta.
 - Domainiin, DNS:ään ja Vercelin tuotantoasetuksiin ei kosketa ilman Hannun lupaa. Älä yhdistä main-haaraan: Hannu hyväksyy ja julkaisee.

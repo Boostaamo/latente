@@ -20,5 +20,5 @@ Datan tuottaa Latenten skripti `Kiinteistöhaku/skriptit/taloyhtio_json.py` Driv
 
 ## Ei tässä vaiheessa
 - Interaktiivinen säästölaskuri: Bistek toteuttaa (Hannu 17.11.2026).
-- Käyntien kirjaus myyntiputkeen (kiinnostuspisteet): toteuttaja päättämättä. CLAUDE.md:n mukaan Bistek/AI Softarobotit -raja tarkistetaan ennen toteutusta.
+- Käyntien kirjaus myyntiputkeen (kiinnostuspisteet): ohje kehittäjälle on Latenten Kohdesivusto-kansiossa ("2026-11 Käyntien kirjaus kiinnostuspisteisiin - ohje kehittäjälle - Latente v1.md"). Ei evästeitä, ei IP:tä, vain kohde, tapahtuma, aika ja oma. Kirjauksen jälkeen `tietosuoja`-teksti päivitetään Hannun hyväksymäksi.
 - Säästöt näytetään arvioina (Hannu 17.11.2026).

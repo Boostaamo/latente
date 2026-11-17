@@ -16,3 +16,23 @@ Tämä on Dimman verkkosivustopohja (Next.js, App Router, TypeScript), jolla Dim
 
 ## Rajat
 - Räätälöity taustajärjestelmä, kirjautuminen, maksut ja integraatiot tavallista lomaketta ja analytiikkaa laajemmin kuuluvat Bistekille. Pysäytä työ ja kerro, jos tarve ylittää nämä.
+
+## Latenten sivusto: lisäohjeet
+
+Sivusto: Latente Oy (asiakassivusto) | Domain: latente.fi (rekisteröinti <täydennä>) | Kirjaus: Latenten asiakaskortti, ei konsernin sivustorekisteriä
+Tila: luonnos | Versio: v0.1 | Pvm: 2026-11-17 | Hyväksyjä: Hannu
+Prosessi: Dimman verkkosivuprosessi (dimma-30…37), alkaen briefistä (Drive: Latenten asiakaskansio, 03 Toteutus ja projektityö/Verkkosivu/).
+
+### Lähteet
+- Sisältö: vain hyväksytyt tekstit (Verkkosivu/2026-11 Verkkosivun tekstit - Latente v1.docx). Jos teksti puuttuu, jätä <täydennä> ja kerro, mitä tarvitaan.
+- Sävy: suomi, asukkaalle ymmärrettävä, ei teknistä jargonia, ei termiä "viileää vettä".
+- Ulkoasu: Muste #14171D, Usva #EEEBE4, Kupari #C8743C, tumma kupari #9A5426, Kaste #8FB3C2. Schibsted Grotesk (600–800) otsikoihin, Source Sans 3 (vähintään 400) leipätekstiin. Tekstilogo, kunnes logo valmistuu.
+
+### Säännöt
+- Konversiopiste: kartoitus- ja yhteydenottopyyntö (analytiikassa `generate_lead`).
+- Ei palvelunimiä (GFC, Grofi, Dimma ym.) sivulla.
+- Lukuja vain todennettuina; pilotin 17 % ei käytetä, säästöväitteet tarkistetaan ennen julkaisua. Ei sanaa "ainoa", ei käyttövesilupausta.
+- Tietosuoja: rekisterinpitäjä Latente Oy, tietosuojaosoite Latenten oma, liidien säilytys 24 kk, GA 14 kk.
+- Ei henkilötietoja eikä liidilistan yhteystietoja repoon. Kohdesivuille (/taloyhtio/[tunniste]) vain rakennuksen julkiset tiedot ja säästöarvio.
+- Kohdesivukäyntien kirjaus myyntiputkeen ja säästölaskuri: tarkista Bistek/AI Softarobotit -raja ennen toteutusta.
+- Domainiin, DNS:ään ja Vercelin tuotantoasetuksiin ei kosketa ilman Hannun lupaa. Älä yhdistä main-haaraan: Hannu hyväksyy ja julkaisee.

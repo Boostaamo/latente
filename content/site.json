@@ -1,22 +1,21 @@
 {
-  "name": "Asiakas Oy",
-  "tagline": "<täydennä: lyhyt lupaus>",
+  "name": "Latente",
+  "tagline": "Lämpöä talveksi, viileyttä kesäksi. Talon omasta ilmasta.",
   "locale": "fi_FI",
-  "contactEmail": "<täydennä>",
+  "contactEmail": "hannu@dimma.fi",
+  "legalName": "Latente Oy",
+  "businessId": "3670012-1",
+  "address": "Lampettikuja 6, 00750 Helsinki",
+  "headerCta": { "label": "Oma taloyhtiö", "href": "/#taloyhtio" },
   "nav": [
-    { "label": "Etusivu", "href": "/" },
-    { "label": "Ota yhteyttä", "href": "/yhteys" }
+    { "label": "Ratkaisu", "href": "/#ratkaisu" },
+    { "label": "Miten se toimii", "href": "/#vuosi" },
+    { "label": "Tuotteet", "href": "/#tuotteet" },
+    { "label": "Palvelut", "href": "/#palvelut" }
   ],
   "footerLinks": [
-    { "label": "Tietosuoja", "href": "/tietosuoja" }
+    { "label": "Tietosuojaseloste", "href": "/tietosuoja" }
   ],
-  "boostaamoBadge": true,
-  "ecosystem": [
-    { "label": "Growth Flame Company", "href": "https://www.gfc.fi" },
-    { "label": "Dimma", "href": "https://www.dimma.fi" },
-    { "label": "Grofi", "href": "https://www.grofi.fi" },
-    { "label": "AI Softarobotit", "href": "https://www.softarobotit.fi" },
-    { "label": "HR Impact", "href": "https://www.hrimpact.fi" },
-    { "label": "Bistek", "href": "https://www.bistek.fi" }
-  ]
+  "boostaamoBadge": false,
+  "ecosystem": []
 }

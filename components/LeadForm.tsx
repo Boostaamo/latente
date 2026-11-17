@@ -5,7 +5,15 @@ import { track } from "@/lib/analytics";
 
 type Status = "idle" | "sending" | "ok" | "error";
 
-export default function LeadForm({ source }: { source: string }) {
+export default function LeadForm({
+  source,
+  title,
+  submit = "Lähetä",
+}: {
+  source: string;
+  title?: string;
+  submit?: string;
+}) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
 
@@ -60,7 +68,7 @@ export default function LeadForm({ source }: { source: string }) {
 
   if (status === "ok") {
     return (
-      <p className="notice" role="status">
+      <p className="notice form-done" role="status">
         Kiitos! Olemme sinuun yhteydessä pian.
       </p>
     );
@@ -68,6 +76,7 @@ export default function LeadForm({ source }: { source: string }) {
 
   return (
     <form className="form" onSubmit={onSubmit} noValidate>
+      {title && <h3>{title}</h3>}
       <div className="field">
         <label htmlFor="housingCompany">Taloyhtiö</label>
         <input id="housingCompany" name="housingCompany" type="text" placeholder="Esim. As Oy Esimerkkitalo" autoComplete="organization" maxLength={200} />
@@ -102,7 +111,7 @@ export default function LeadForm({ source }: { source: string }) {
       </div>
       <div className="field">
         <label htmlFor="message">Viesti</label>
-        <textarea id="message" name="message" rows={5} maxLength={4000} />
+        <textarea id="message" name="message" rows={4} maxLength={4000} />
       </div>
       {/* Honeypot: piilotettu oikeilta käyttäjiltä */}
       <div className="hp" aria-hidden="true">
@@ -118,8 +127,8 @@ export default function LeadForm({ source }: { source: string }) {
       <p className="small">
         Kerro taloyhtiön nimi tai osoite. Käsittelemme tietoja <a href="/tietosuoja">tietosuojaselosteen</a> mukaisesti.
       </p>
-      <button className="button" type="submit" disabled={status === "sending"}>
-        {status === "sending" ? "Lähetetään…" : "Lähetä"}
+      <button className="link fill" type="submit" disabled={status === "sending"}>
+        {status === "sending" ? "Lähetetään…" : submit} <span className="ar" aria-hidden="true">→</span>
       </button>
       {status === "error" && (
         <p className="error" role="alert">{error}</p>

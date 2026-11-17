@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    // Erillistä yhteydenottosivua ei ole: lomake on etusivulla.
+    return [{ source: "/yhteys", destination: "/#taloyhtio", permanent: false }];
+  },
   async headers() {
     return [
       {

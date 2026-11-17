@@ -1,0 +1,136 @@
+{
+  "hero": {
+    "title": "Lämpöä talveksi, viileyttä kesäksi. Talon omasta hukkalämmöstä.",
+    "lead": "Talostanne virtaa joka päivä lämmintä sisäilmaa ulos. Latente ottaa tämän lämmön talvella talteen lämmitykseen ja kesällä asuntojen viilentämiseen. Kaikki samalla laitteella.",
+    "primary": { "label": "Katso taloyhtiönne arvio", "href": "#taloyhtio" },
+    "secondary": { "label": "Miten se toimii", "href": "#vuosi" },
+    "diagram": {
+      "alt": "Kerrostalo, jonka katolla on laite, joka ottaa talvella lämmön talteen poistoilmasta ja viilentää kesällä huoneilmaa",
+      "winter": "TALVI",
+      "winterText": "lämpö talteen",
+      "summer": "KESÄ",
+      "summerText": "viileämpi huoneilma",
+      "inside": "lämmin sisäilma"
+    },
+    "facts": [
+      { "value": "1 laite", "text": "sekä lämmittää että viilentää" },
+      { "value": "12 kk", "text": "hyödyksi ympäri vuoden" },
+      { "value": "Katolle tai pihalle", "text": "talon rakenteen mukaan" }
+    ]
+  },
+  "problem": {
+    "label": "Ongelma",
+    "title": "Lämmitätte talon, ja sama lämpö karkaa ulos.",
+    "text": "Kerrostalon ilmanvaihto vie kylpyhuoneista ja keittiöistä lämmintä sisäilmaa ulos. Samaan aikaan taloon ostetaan kaukolämpöä. Kesällä taas asunnot kuumenevat, eikä erillinen jäähdytys ole kerrostalossa yleensä järkevä hankinta.",
+    "figure": "30–50 %",
+    "figureText": "talon lämmityksestä karkaa ilmanvaihdon mukana ulos. Teidän talonne luku lasketaan kartoituksessa."
+  },
+  "year": {
+    "label": "Miten se toimii",
+    "title": "Yksi laite, koko vuosi",
+    "text": "Talvella laite ottaa ulos menevän ilman lämmön talteen, ja lämmityslasku pienenee. Kesällä sama laite viilentää asuntoja, ja asuminen on mukavampaa helteelläkin.",
+    "chartAlt": "Vuoden kuukaudet: lämmitys syksystä kevääseen, viilennys kesällä (suuntaa-antava)",
+    "months": ["tammi", "helmi", "maalis", "huhti", "touko", "kesä", "heinä", "elo", "syys", "loka", "marras", "joulu"],
+    "coolingMonths": [5, 6, 7],
+    "legendHeating": "Lämmitys",
+    "legendCooling": "Viilennys",
+    "legendNote": "Kausien pituus vaihtelee kohteen ja sään mukaan.",
+    "winter": {
+      "label": "Talvi",
+      "title": "Lämpö talteen, energiaa säästöön",
+      "items": [
+        "Laite ottaa lämmön talteen ilmasta, joka muuten menisi ulos.",
+        "Talteen otettu lämpö käytetään talon lämmitykseen, joten kaukolämpöä tarvitaan vähemmän.",
+        "Kaukolämpö jää paikalleen kovien pakkasten ja varmuuden vuoksi."
+      ]
+    },
+    "summer": {
+      "label": "Kesä",
+      "title": "Viileämpi huoneilma, parempi mukavuus",
+      "items": [
+        "Sama laite viilentää kesällä asuntoja.",
+        "Helteellä talon oma sisäilma on ulkoilmaa viileämpää.",
+        "Asuntoihin tulee ohuet putket ja huonelaitteet, jotka lämmittävät talvella ja viilentävät kesällä."
+      ]
+    }
+  },
+  "compare": {
+    "label": "Ero perinteiseen",
+    "title": "Viilennys ei ole erillinen kuluerä",
+    "text": "Sama laite tekee molemmat työt. Säästö lasketaan etukäteen, ja hankinnan voi maksaa syntyvillä säästöillä.",
+    "headNow": "Nyt",
+    "headLatente": "Latenten kanssa",
+    "rows": [
+      ["Lämmin sisäilma puhalletaan katolta ulos", "Hukkalämpö käytetään talon lämmitykseen"],
+      ["Viilennys vaatisi oman koneen ja omat putket", "Sama laite ja samat putket lämmittävät ja viilentävät"],
+      ["Jäähdytyskone olisi käytössä vain kesällä", "Laite on hyödyksi koko vuoden"]
+    ]
+  },
+  "products": {
+    "label": "Tuotteet",
+    "title": "Katolle tai pihalle",
+    "text": "Laite asennetaan joko katolle tai pihalle. Sopiva vaihtoehto valitaan talon rakenteen ja koon mukaan.",
+    "items": [
+      {
+        "kind": "roof",
+        "tag": "Asennus katolle",
+        "name": "Latente Kierto",
+        "text": "Laite asennetaan katolle nykyisen ilmanvaihtokoneen viereen. Putket kulkevat talon ulkopuolella parvekkeiden kohdalla, ja asuntoon tarvitaan vain kaksi pientä seinäläpivientiä.",
+        "spec": [
+          ["Missä", "Katolla, ilmanvaihtokoneen vieressä"],
+          ["Putket", "Talon ulkopuolella parvekkeiden kohdalla"],
+          ["Asunnossa", "Kaksi pientä seinäläpivientiä ja huonelaite"]
+        ]
+      },
+      {
+        "kind": "yard",
+        "tag": "Laitekontti pihalle",
+        "name": "Latente Piha",
+        "text": "Valmiiksi koottu laitekontti, joka nostetaan pihalle ja kytketään talon lämmitykseen.",
+        "spec": [
+          ["Missä", "Talon pihalla"],
+          ["Koko", "Eri kokoja talon mukaan (45–180 kW)"],
+          ["Asennus", "Valmis kontti nostetaan paikalleen ja kytketään"]
+        ]
+      }
+    ]
+  },
+  "services": {
+    "label": "Palvelut",
+    "title": "Näin hanke etenee",
+    "text": "Kuljemme mukana ensimmäisestä selvityksestä huoltoon asti. Voitte käyttää myös omaa suunnittelijaa ja urakoitsijaa, jos taloyhtiöllä on jo sellainen.",
+    "steps": [
+      ["Kartoitus", "Käymme talossa ja arvioimme, sopiiko ratkaisu teille"],
+      ["Säästölaskelma", "Näette etukäteen, paljonko taloyhtiö säästää vuodessa"],
+      ["Laite", "Valitsemme talollenne oikean kokoisen laitteen ja toimitamme sen"],
+      ["Toteutus", "Hoidamme suunnittelun ja asennuksen tai autamme omaa urakoitsijaanne"],
+      ["Rahoitus", "Hankinnan voi maksaa erissä syntyvillä säästöillä"],
+      ["Seuranta", "Näette, paljonko energiaa ja rahaa säästyy"],
+      ["Huolto", "Huolehdimme, että laite toimii vuodesta toiseen"]
+    ]
+  },
+  "audience": {
+    "label": "Kenelle",
+    "title": "Kerrostaloille, joissa koneellinen poistoilmanvaihto",
+    "items": [
+      ["Kiinteistösijoittajat", "Pienemmät lämmityskulut, pienemmät päästöt ja asunnot, jotka pysyvät kesälläkin viileinä."],
+      ["Vuokrataloyhtiöt", "Energiaremontti ilman suurta kertamaksua: hankinnan voi maksaa säästöillä."],
+      ["Taloyhtiöt", "Oman talon säästöarvio ennen päätöstä. Kartoituksen tulokset auttavat hallitusta ja yhtiökokousta päättämään."]
+    ]
+  },
+  "form": {
+    "label": "Oma taloyhtiö",
+    "title": "Katso, mitä teidän talossanne on mahdollista säästää",
+    "text": "Pystymme laskemaan nopeasti alustavan säästöarvion rakennustietojen pohjalta. Katso, millainen potentiaali talossanne on.",
+    "formTitle": "Pyydä taloyhtiönne arvio",
+    "submit": "Lähetä"
+  },
+  "contact": {
+    "label": "Yhteystiedot",
+    "title": "Kysy kohteestanne suoraan",
+    "text": "Kerromme mielellämme, sopiiko ratkaisu teidän talollenne. Kysyminen ei sido mihinkään.",
+    "people": [
+      { "name": "Kari Saarinen", "role": "Tekninen asiantuntija" }
+    ]
+  }
+}

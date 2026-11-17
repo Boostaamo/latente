@@ -42,24 +42,32 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   }
 
+  const housingCompany = str(body.housingCompany, 200);
+  const address = str(body.address, 300);
+  const role = str(body.role, 100);
   const name = str(body.name, 200);
   const email = str(body.email, 200);
-  const company = str(body.company, 200);
+  const phone = str(body.phone, 50);
   const message = str(body.message, 4000);
 
-  if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return NextResponse.json({ ok: false, error: "Tarkista nimi ja sähköpostiosoite." }, { status: 400 });
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return NextResponse.json({ ok: false, error: "Tarkista sähköpostiosoite." }, { status: 400 });
   }
-  if (body.consent !== true) {
-    return NextResponse.json({ ok: false, error: "Hyväksy tietojen käsittely lähettääksesi lomakkeen." }, { status: 400 });
+  if (!housingCompany && !address) {
+    return NextResponse.json({ ok: false, error: "Kerro taloyhtiön nimi tai osoite." }, { status: 400 });
   }
 
+  // Käsittelyperuste on oikeutettu etu (tietosuojaseloste), joten erillistä hyväksyntää ei vaadita.
+  // Markkinointilupa on vapaaehtoinen suostumus.
   const lead = {
+    housingCompany,
+    address,
+    role,
     name,
     email,
-    company,
+    phone,
     message,
-    consent: true,
+    marketingConsent: body.marketingConsent === true,
     source: str(body.source, 100),
     page: str(body.page, 300),
     referrer: str(body.referrer, 300),
@@ -87,10 +95,33 @@ export async function POST(req: Request) {
         "Content-Type": "application/json",
         ...(process.env.LEAD_WEBHOOK_SECRET ? { "X-Webhook-Secret": process.env.LEAD_WEBHOOK_SECRET } : {}),
       },
-      body: JSON.stringify(lead),
+      // Osa vastaanottajista (esim. Google Apps Script) ei näe otsikoita, joten salaisuus lähetetään myös sisällössä.
+      body: JSON.stringify(process.env.LEAD_WEBHOOK_SECRET ? { ...lead, secret: process.env.LEAD_WEBHOOK_SECRET } : lead),
     });
     if (!res.ok) {
       console.error(`Liidin lähetys epäonnistui, tila ${res.status}.`);
+      return NextResponse.json({ ok: false, error: "Lähetys epäonnistui. Yritä myöhemmin uudelleen." }, { status: 502 });
+    }
+    // Vastaanottaja voi vastata 200, vaikka hylkäisi liidin (esim. väärä salaisuus tai kirjautumissivu). Tulkitaan se virheeksi.
+    const text = await res.text();
+    let rejected = /^\s*</.test(text);
+    try {
+      rejected = rejected || (JSON.parse(text) as { ok?: unknown }).ok === false;
+    } catch {
+      /* ei JSON-vastausta: hyväksytään, ellei vastaus ole HTML-sivu */
+    }
+    if (rejected) {
+      // Lokitetaan vain vastaanottajan vastauksen alku vianhakua varten (ei liidin tietoja).
+      const kind = /^\s*</.test(text) ? "HTML" : "ok:false";
+      const host = (() => {
+        try {
+          return new URL(res.url).host;
+        } catch {
+          return "?";
+        }
+      })();
+      const snippet = text.replace(/\s+/g, " ").slice(0, 200);
+      console.error(`Liidin vastaanottaja hylkäsi liidin (${kind}, tila ${res.status}, palvelin ${host}): ${snippet}`);
       return NextResponse.json({ ok: false, error: "Lähetys epäonnistui. Yritä myöhemmin uudelleen." }, { status: 502 });
     }
   } catch {

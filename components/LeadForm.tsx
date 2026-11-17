@@ -16,11 +16,14 @@ export default function LeadForm({ source }: { source: string }) {
     const params = new URLSearchParams(window.location.search);
 
     const payload = {
+      housingCompany: data.get("housingCompany"),
+      address: data.get("address"),
+      role: data.get("role"),
       name: data.get("name"),
       email: data.get("email"),
-      company: data.get("company"),
+      phone: data.get("phone"),
       message: data.get("message"),
-      consent: data.get("consent") === "on",
+      marketingConsent: data.get("marketingConsent") === "on",
       website: data.get("website"), // honeypot
       source,
       page: window.location.pathname,
@@ -66,16 +69,36 @@ export default function LeadForm({ source }: { source: string }) {
   return (
     <form className="form" onSubmit={onSubmit} noValidate>
       <div className="field">
-        <label htmlFor="name">Nimi *</label>
-        <input id="name" name="name" type="text" autoComplete="name" required maxLength={200} />
+        <label htmlFor="housingCompany">Taloyhtiö</label>
+        <input id="housingCompany" name="housingCompany" type="text" placeholder="Esim. As Oy Esimerkkitalo" autoComplete="organization" maxLength={200} />
+      </div>
+      <div className="field">
+        <label htmlFor="address">Osoite</label>
+        <input id="address" name="address" type="text" placeholder="Katuosoite ja postinumero" autoComplete="street-address" maxLength={300} />
+      </div>
+      <div className="field">
+        <label htmlFor="role">Roolisi</label>
+        <select id="role" name="role" defaultValue="">
+          <option value="">Valitse</option>
+          <option>Hallituksen puheenjohtaja</option>
+          <option>Hallituksen jäsen</option>
+          <option>Isännöitsijä</option>
+          <option>Osakas tai asukas</option>
+          <option>Kiinteistöjohtaja tai omistaja</option>
+          <option>Muu</option>
+        </select>
+      </div>
+      <div className="field">
+        <label htmlFor="name">Nimi</label>
+        <input id="name" name="name" type="text" autoComplete="name" maxLength={200} />
       </div>
       <div className="field">
         <label htmlFor="email">Sähköposti *</label>
-        <input id="email" name="email" type="email" autoComplete="email" required maxLength={200} />
+        <input id="email" name="email" type="email" placeholder="nimi@esimerkki.fi" autoComplete="email" required maxLength={200} />
       </div>
       <div className="field">
-        <label htmlFor="company">Yritys</label>
-        <input id="company" name="company" type="text" autoComplete="organization" maxLength={200} />
+        <label htmlFor="phone">Puhelin</label>
+        <input id="phone" name="phone" type="tel" autoComplete="tel" maxLength={50} />
       </div>
       <div className="field">
         <label htmlFor="message">Viesti</label>
@@ -87,12 +110,14 @@ export default function LeadForm({ source }: { source: string }) {
         <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
       <div className="field checkbox">
-        <input id="consent" name="consent" type="checkbox" required />
-        <label htmlFor="consent">
-          Hyväksyn, että tietojani käsitellään yhteydenottoa varten.{" "}
-          <a href="/tietosuoja">Tietosuojaseloste</a> *
+        <input id="marketingConsent" name="marketingConsent" type="checkbox" />
+        <label htmlFor="marketingConsent">
+          Latente saa lähettää minulle tietoa ratkaisusta. Voin perua luvan milloin tahansa.
         </label>
       </div>
+      <p className="small">
+        Kerro taloyhtiön nimi tai osoite. Käsittelemme tietoja <a href="/tietosuoja">tietosuojaselosteen</a> mukaisesti.
+      </p>
       <button className="button" type="submit" disabled={status === "sending"}>
         {status === "sending" ? "Lähetetään…" : "Lähetä"}
       </button>

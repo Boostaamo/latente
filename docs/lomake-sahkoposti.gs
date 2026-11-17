@@ -4,7 +4,7 @@
  *
  * Käyttöönotto:
  * 1. script.google.com: New project, liitä tämä koodi. Tee skripti sillä Google-tilillä,
- *    jolta posti halutaan lähettää (ensisijaisesti Latenten oma tili).
+ *    jolta posti halutaan lähettää (nyt hannu@dimma.fi, myöhemmin Latenten oma tili).
  * 2. Project Settings, Script properties: lisää SECRET (sama arvo kuin Vercelin LEAD_WEBHOOK_SECRET).
  *    Valinnainen: SHEET_ID = Google Sheets -taulukon tunniste, jos yhteydenotot halutaan myös taulukkoon.
  * 3. Aja kerran funktio testi() editorista ja hyväksy käyttöoikeudet. Tarkista, että testiviesti tuli perille.
@@ -13,7 +13,8 @@
  * Muutosten jälkeen: Deploy, Manage deployments, Edit, Version: New version (muuten vanha koodi jää käyttöön).
  * Salaisuutta ei kirjoiteta koodiin. Säilytys: poista yli 24 kk vanhat yhteydenotot postista ja taulukosta.
  */
-const TO = "hannu.savela@latente.fi";
+// Väliaikaisesti hannu@dimma.fi, kunnes latente.fi-sähköposti toimii (Hannu 17.11.2026). Vaihda sitten hannu.savela@latente.fi.
+const TO = "hannu@dimma.fi";
 const SENDER_NAME = "Latente-lomake";
 const SUBJECT = "Latente: uusi yhteydenotto";
 

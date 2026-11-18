@@ -1,5 +1,6 @@
 // Kohdesivujen käyntitapahtumat (docs/kohdesivu-tapahtumat.md).
-// Tallennus Upstash Redisiin sen REST-rajapinnan kautta (ei erillistä kirjastoa).
+// Tallennus Supabaseen (EU) sen REST-rajapinnan kautta (ei erillistä kirjastoa), kuten muissakin sivustoissa.
+// Taulu ja funktio: supabase/migrations/20261118_kohdesivu_tapahtumat.sql. Latenten tiedot omassa Supabase-projektissaan.
 // Rivillä on vain kohde, tapahtuma, aika ja oma. Ei IP-osoitetta, User-Agentia, Refereriä eikä kävijätunnistetta.
 // Älä lokita pyyntöjä: virheet ohitetaan hiljaa.
 
@@ -7,82 +8,66 @@ export const SELAIN_TAPAHTUMAT = ["avaus", "luettu", "jako", "laskelma"] as cons
 export type Tapahtuma = (typeof SELAIN_TAPAHTUMAT)[number] | "yhteydenotto";
 export type Rivi = { kohde: string; tapahtuma: Tapahtuma; aika: string; oma: boolean };
 
-const SAILYTYS_S = 13 * 31 * 24 * 60 * 60; // kuukausilista vanhenee 13 kk jälkeen (säilytys 12 kk)
-const RAJA_VRK = 300; // tapahtumia vuorokaudessa samalle kohteelle
-
-function yhteys(): { url: string; token: string } | null {
-  // Vercelin Upstash-integraatio lisää KV_REST_API_*-muuttujat; suoraan Upstashista UPSTASH_REDIS_REST_*.
-  const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
-  return url && token ? { url: url.replace(/\/$/, ""), token } : null;
+function yhteys(): { url: string; avain: string; skeema: string } | null {
+  // Vercelin Supabase-integraatio lisää SUPABASE_URL- ja SUPABASE_SERVICE_ROLE_KEY-muuttujat.
+  const url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const avain = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  // Valinnainen: jos tapahtumat ovat yhteisen projektin omassa skeemassa, skeeman nimi (oletus public).
+  const skeema = process.env.SUPABASE_TAPAHTUMA_SKEEMA || "public";
+  return url && avain ? { url: url.replace(/\/$/, ""), avain, skeema } : null;
 }
 
 export const tallennusKaytossa = () => yhteys() !== null;
 
-async function pipeline(komennot: (string | number)[][]): Promise<{ result?: unknown; error?: string }[]> {
-  const y = yhteys();
-  if (!y) return [];
-  const res = await fetch(`${y.url}/pipeline`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${y.token}`, "Content-Type": "application/json" },
-    body: JSON.stringify(komennot),
-    cache: "no-store",
-  });
-  if (!res.ok) throw new Error(`Redis ${res.status}`);
-  return (await res.json()) as { result?: unknown; error?: string }[];
+function otsakkeet(y: { avain: string; skeema: string }): Record<string, string> {
+  return {
+    apikey: y.avain,
+    Authorization: `Bearer ${y.avain}`,
+    "Content-Type": "application/json",
+    "Accept-Profile": y.skeema,
+    "Content-Profile": y.skeema,
+  };
 }
 
-const kuukausi = (d: Date) => d.toISOString().slice(0, 7);
-
-/** Tallentaa tapahtuman. Ei koskaan heitä virhettä: kirjaus ei saa estää sivun tai lomakkeen käyttöä. */
+/** Tallentaa tapahtuma. Ei koskaan heitä virhettä: kirjaus ei saa estää sivun tai lomakkeen käyttöä. */
 export async function tallenna(kohde: string, tapahtuma: Tapahtuma): Promise<void> {
+  const y = yhteys();
+  if (!y) return;
   try {
-    const nyt = new Date();
-    const raja = `raja:${kohde}:${nyt.toISOString().slice(0, 10)}`;
-    const [maara] = await pipeline([
-      ["INCR", raja],
-      ["EXPIRE", raja, 2 * 24 * 60 * 60],
-    ]);
-    if (typeof maara?.result !== "number" || maara.result > RAJA_VRK) return;
-    const rivi: Rivi = {
-      kohde,
-      tapahtuma,
-      aika: nyt.toISOString().replace(/\.\d{3}Z$/, "Z"),
-      oma: process.env.VERCEL_ENV !== "production",
-    };
-    const avain = `tapahtumat:${kuukausi(nyt)}`;
-    await pipeline([
-      ["RPUSH", avain, JSON.stringify(rivi)],
-      ["EXPIRE", avain, SAILYTYS_S],
-    ]);
+    await fetch(`${y.url}/rest/v1/rpc/kirjaa_kohdesivu_tapahtuma`, {
+      method: "POST",
+      headers: otsakkeet(y),
+      body: JSON.stringify({ p_kohde: kohde, p_tapahtuma: tapahtuma, p_oma: process.env.VERCEL_ENV !== "production" }),
+      cache: "no-store",
+    });
   } catch {
     /* ohitetaan hiljaa */
   }
 }
 
-/** Palauttaa rivit annetusta päivästä alkaen, vanhimmasta uusimpaan. Heittää virheen, jos tallennus ei vastaa. */
+/** Palauttaa rivit annetusta hetkestä alkaen, vanhimmasta uusimpaan. Heittää virheen, jos tallennus ei vastaa. */
 export async function vienti(alkaen: Date): Promise<Rivi[]> {
-  const nyt = new Date();
-  const kuukaudet: string[] = [];
-  const d = new Date(Date.UTC(alkaen.getUTCFullYear(), alkaen.getUTCMonth(), 1));
-  while (d <= nyt && kuukaudet.length < 14) {
-    kuukaudet.push(kuukausi(d));
-    d.setUTCMonth(d.getUTCMonth() + 1);
-  }
-  if (!kuukaudet.length) return [];
-  const tulokset = await pipeline(kuukaudet.map((k) => ["LRANGE", `tapahtumat:${k}`, 0, -1]));
-  const raja = alkaen.toISOString();
+  const y = yhteys();
+  if (!y) return [];
   const rivit: Rivi[] = [];
-  for (const t of tulokset) {
-    if (t.error) throw new Error("Redis");
-    for (const s of (t.result as string[] | null) ?? []) {
-      try {
-        const r = JSON.parse(s) as Rivi;
-        if (r.aika >= raja) rivit.push({ kohde: r.kohde, tapahtuma: r.tapahtuma, aika: r.aika, oma: r.oma });
-      } catch {
-        /* rikkinäinen rivi ohitetaan */
-      }
+  const sivu = 1000;
+  for (let alku = 0; alku < 200_000; alku += sivu) {
+    const q = new URLSearchParams({
+      select: "kohde,tapahtuma,aika,oma",
+      aika: `gte.${alkaen.toISOString()}`,
+      order: "aika.asc,id.asc",
+    });
+    const res = await fetch(`${y.url}/rest/v1/kohdesivu_tapahtumat?${q}`, {
+      headers: { ...otsakkeet(y), Range: `${alku}-${alku + sivu - 1}` },
+      cache: "no-store",
+    });
+    if (!res.ok) throw new Error(`Supabase ${res.status}`);
+    const osa = (await res.json()) as Rivi[];
+    for (const r of osa) {
+      // Aika samaan muotoon kuin ohjeessa: UTC, sekunnin tarkkuus.
+      rivit.push({ kohde: r.kohde, tapahtuma: r.tapahtuma, aika: new Date(r.aika).toISOString().replace(/\.\d{3}Z$/, "Z"), oma: r.oma });
     }
+    if (osa.length < sivu) break;
   }
-  return rivit.sort((a, b) => (a.aika < b.aika ? -1 : a.aika > b.aika ? 1 : 0));
+  return rivit;
 }

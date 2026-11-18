@@ -240,3 +240,37 @@ main { min-height: 60vh; }
   html { scroll-behavior: auto; }
   * { animation: none !important; transition: none !important; }
 }
+
+/* Kohdesivut (/taloyhtio/[tunniste]) */
+.kohde-hero-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px 72px; align-items: start; }
+@media (max-width: 960px) { .kohde-hero-grid { grid-template-columns: minmax(0, 1fr); } }
+.kohde-hero-teksti { display: flex; flex-direction: column; gap: 24px; }
+.kohde-hero h1 { font-size: clamp(34px, 4.4vw, 58px); line-height: 1.04; }
+.kohde-luvut { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 8px 0 0; border-top: 1px solid var(--viiva-tumma); }
+.kohde-luvut div { padding: 18px 18px 0 0; display: flex; flex-direction: column-reverse; gap: 4px; }
+.kohde-luvut div + div { padding-left: 18px; border-left: 1px solid var(--viiva-tumma); }
+.kohde-luvut dt { font-size: 15px; color: var(--harmaa-vaalea); }
+.kohde-luvut dd { margin: 0; font: 700 clamp(22px, 2.4vw, 30px)/1.1 var(--f-otsikko); color: var(--usva); font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) {
+  .kohde-luvut { grid-template-columns: minmax(0, 1fr); }
+  .kohde-luvut div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--viiva-tumma); margin-top: 18px; }
+}
+.kohde-pieni { font-size: 15px; }
+.kohde-kuva { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.kohde-kuva img { width: 100%; height: auto; max-height: 560px; object-fit: cover; border-radius: 2px; display: block; }
+.kohde-kuva figcaption { font-size: 14px; color: var(--harmaa-vaalea); }
+.kohde-osio { display: flex; flex-direction: column; gap: 28px; }
+.kohde-spec { max-width: 52rem; }
+.kohde-kaksi { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 56px; }
+@media (max-width: 720px) { .kohde-kaksi { grid-template-columns: minmax(0, 1fr); } }
+.kohde-taulukko { overflow-x: auto; }
+.kohde-taulukko table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 16px; font-variant-numeric: tabular-nums; }
+.kohde-taulukko th, .kohde-taulukko td { text-align: right; padding: 12px 10px; border-bottom: 1px solid var(--viiva); white-space: nowrap; }
+.kohde-taulukko th:first-child { text-align: left; }
+.kohde-taulukko thead th { font: 600 13px var(--f-otsikko); letter-spacing: .1em; text-transform: uppercase; color: var(--harmaa); }
+.kohde-taulukko b { color: var(--kupari-tumma); }
+
+/* Kohdesivun jakopainike */
+.jako { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.jako .link { padding: 12px 20px; font-size: 15px; }
+.jako-osoite { font-size: 14px; word-break: break-all; user-select: all; }

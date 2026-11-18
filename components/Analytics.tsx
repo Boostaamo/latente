@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "";
 const KEY = "consent-analytics";
@@ -29,6 +30,7 @@ export default function Analytics() {
   const [consent, setConsent] = useState<Consent>(null);
   const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
+  const kohdesivu = (usePathname() || "").startsWith("/taloyhtio");
 
   useEffect(() => {
     const c = readConsent();
@@ -41,7 +43,8 @@ export default function Analytics() {
   }, []);
 
   const valid = /^G-[A-Z0-9]+$/.test(GA_ID);
-  if (!ready || !valid) return null;
+  // Kohdesivuilla (/taloyhtio/...) ei evästeitä, analytiikkaa eikä evästebanneria.
+  if (!ready || !valid || kohdesivu) return null;
 
   const choose = (v: "granted" | "denied") => {
     writeConsent(v);

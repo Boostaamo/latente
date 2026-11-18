@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  // API-reitit lukevat julkaistut tunnisteet tiedostoista, joten kohdetiedostot mukaan palvelinfunktioihin.
+  outputFileTracingIncludes: {
+    "/api/tapahtuma": ["./content/taloyhtiot/**"],
+    "/api/lead": ["./content/taloyhtiot/**"],
+  },
   async redirects() {
     // Erillistä yhteydenottosivua ei ole: lomake on etusivulla.
     return [{ source: "/yhteys", destination: "/#taloyhtio", permanent: false }];
@@ -14,6 +19,14 @@ const nextConfig = {
           { key: "X-Frame-Options", value: "DENY" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        ],
+      },
+      {
+        // Kohdesivut: ei hakukoneisiin, ei viittaavaa osoitetta eteenpäin (osoite sisältää taloyhtiön tunnisteen).
+        source: "/taloyhtio/:path*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+          { key: "Referrer-Policy", value: "no-referrer" },
         ],
       },
     ];

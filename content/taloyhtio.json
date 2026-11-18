@@ -1,0 +1,26 @@
+{
+  "_ohje": "Kohdesivujen (/taloyhtio/[tunniste]) yhteiset tekstit. {nimi}, {alue} ja muut aaltosulkeissa olevat korvataan kohteen tiedoilla. Tekstit odottavat Hannun hyväksyntää.",
+  "eyebrow": "Arvio taloyhtiöllenne · {alue}",
+  "otsikko": "{nimi}: talonne poistoilma voisi lämmittää asuntonne",
+  "ingressi": "Teimme tämän arvion hallituksenne käyttöön julkisista rakennustiedoista. Luvut tarkentuvat kartoituksessa, jossa käymme talon ilmanvaihdon ja lämmönjaon läpi paikan päällä.",
+  "talo_otsikko": "Talonne lähtötiedot",
+  "asukas_otsikko": "Mitä tämä tarkoittaa asunnollenne",
+  "asukas_teksti": "Taloyhtiö maksaa investoinnin lainalla, ja laina katetaan rahoitusvastikkeella. Samaan aikaan kaukolämpölasku pienenee, joten hoitovastike voi laskea. Taulukko jakaa säästön ja lainan asuinpinta-alan mukaan.",
+  "asukas_huomio": "Asuinpinta-ala on arvioitu (80 % kerrosalasta), ja todellinen jakoperuste on yhtiöjärjestyksessä. Hinnoissa on arvonlisävero 25,5 %, koska taloyhtiö ei voi vähentää sitä. Kesäviilennyksen sähkönkulutus ei ole mukana, ja se tarkentuu kartoituksessa.",
+  "miten_otsikko": "Yksi laite, kaksi vuodenaikaa",
+  "talvi": "Katolla puhallin vie nyt lämpimän sisäilman ulos. Latenten laite ottaa siitä lämmön talteen talon lämmitykseen. Kaukolämpö jää rinnalle huippu- ja varalämmöksi, joten patterit lämpiävät kuten ennenkin.",
+  "kesa": "Kesällä sama laite voi viilentää asuntoja. Viilennys on lisävaruste: asuntoon tulee konvektori, ja putket viedään parvekelinjoja pitkin ulkokautta. Viilennystä ei ole laskettu säästöön eikä takaisinmaksuun.",
+  "asennus": "Laite asennetaan katolle poistoilmapuhaltimen yhteyteen. Pihalle ei tule porakaivoja eikä ulkoyksiköitä.",
+  "polku_otsikko": "Näin asia etenee",
+  "polku": [
+    { "otsikko": "Kartoitus", "teksti": "Käymme talon läpi paikan päällä ja arvioimme, sopiiko ratkaisu teille." },
+    { "otsikko": "Laskelma", "teksti": "Teemme säästölaskelman talonne todellisilla kulutustiedoilla." },
+    { "otsikko": "Päätös ja toteutus", "teksti": "Hallitus vie asian yhtiökokoukseen. Toimitamme laitteen ja tarvittaessa suunnittelun ja projektinjohdon." }
+  ],
+  "lomake_otsikko": "Pyydä kartoitus",
+  "lomake_teksti": "Jätä yhteystietosi, niin sovimme kartoituksen ajankohdan. Kartoitus ei sido taloyhtiötä mihinkään.",
+  "lomake_nappi": "Lähetä kartoituspyyntö",
+  "jako_nappi": "Kopioi sivun linkki hallitukselle",
+  "jako_kopioitu": "Linkki kopioitu",
+  "tietosuoja": "Tämä sivu on tehty taloyhtiönne käyttöön. Sivu ei käytä evästeitä, eikä se näy hakukoneissa. Kirjaamme taloyhtiön tasolla, kuinka sivua on käytetty (esimerkiksi avaukset ja kartoituspyynnöt), jotta osaamme ottaa yhteyttä oikeaan aikaan. Emme kirjaa IP-osoitetta emmekä tunnista yksittäistä kävijää. Tiedot säilytetään 12 kuukautta. Arvio perustuu julkisiin tietoihin eikä ole sitova tarjous. Lisätietoja ja yhteydenottojen kielto: hannu.savela@latente.fi."
+}

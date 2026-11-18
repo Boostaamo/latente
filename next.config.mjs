@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  // API-reitit lukevat julkaistut tunnisteet tiedostoista, joten kohdetiedostot mukaan palvelinfunktioihin.
+  outputFileTracingIncludes: {
+    "/api/tapahtuma": ["./content/taloyhtiot/**"],
+    "/api/lead": ["./content/taloyhtiot/**"],
+  },
   async redirects() {
     // Erillistä yhteydenottosivua ei ole: lomake on etusivulla.
     return [{ source: "/yhteys", destination: "/#taloyhtio", permanent: false }];

@@ -20,5 +20,7 @@
   "lomake_otsikko": "Pyydä kartoitus",
   "lomake_teksti": "Jätä yhteystietosi, niin sovimme kartoituksen ajankohdan. Kartoitus ei sido taloyhtiötä mihinkään.",
   "lomake_nappi": "Lähetä kartoituspyyntö",
-  "tietosuoja": "Tämä sivu on tehty taloyhtiönne käyttöön. Sivu ei käytä evästeitä eikä seurantaa, eikä se näy hakukoneissa. Arvio perustuu julkisiin tietoihin eikä ole sitova tarjous."
+  "jako_nappi": "Kopioi sivun linkki hallitukselle",
+  "jako_kopioitu": "Linkki kopioitu",
+  "tietosuoja": "Tämä sivu on tehty taloyhtiönne käyttöön. Sivu ei käytä evästeitä, eikä se näy hakukoneissa. Kirjaamme taloyhtiön tasolla, kuinka sivua on käytetty (esimerkiksi avaukset ja kartoituspyynnöt), jotta osaamme ottaa yhteyttä oikeaan aikaan. Emme kirjaa IP-osoitetta emmekä tunnista yksittäistä kävijää. Tiedot säilytetään 12 kuukautta. Arvio perustuu julkisiin tietoihin eikä ole sitova tarjous. Lisätietoja ja yhteydenottojen kielto: hannu.savela@latente.fi."
 }

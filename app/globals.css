@@ -269,3 +269,8 @@ main { min-height: 60vh; }
 .kohde-taulukko th:first-child { text-align: left; }
 .kohde-taulukko thead th { font: 600 13px var(--f-otsikko); letter-spacing: .1em; text-transform: uppercase; color: var(--harmaa); }
 .kohde-taulukko b { color: var(--kupari-tumma); }
+
+/* Kohdesivun jakopainike */
+.jako { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.jako .link { padding: 12px 20px; font-size: 15px; }
+.jako-osoite { font-size: 14px; word-break: break-all; user-select: all; }

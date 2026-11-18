@@ -9,10 +9,13 @@ export default function LeadForm({
   source,
   title,
   submit = "Lähetä",
+  defaults,
 }: {
   source: string;
   title?: string;
   submit?: string;
+  /** Esitäytetyt kentät, esim. kohdesivulla taloyhtiön nimi ja osoite. */
+  defaults?: { housingCompany?: string; address?: string };
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
@@ -79,11 +82,11 @@ export default function LeadForm({
       {title && <h3>{title}</h3>}
       <div className="field">
         <label htmlFor="housingCompany">Taloyhtiö</label>
-        <input id="housingCompany" name="housingCompany" type="text" placeholder="Esim. As Oy Esimerkkitalo" autoComplete="organization" maxLength={200} />
+        <input id="housingCompany" name="housingCompany" type="text" placeholder="Esim. As Oy Esimerkkitalo" autoComplete="organization" maxLength={200} defaultValue={defaults?.housingCompany} />
       </div>
       <div className="field">
         <label htmlFor="address">Osoite</label>
-        <input id="address" name="address" type="text" placeholder="Katuosoite ja postinumero" autoComplete="street-address" maxLength={300} />
+        <input id="address" name="address" type="text" placeholder="Katuosoite ja postinumero" autoComplete="street-address" maxLength={300} defaultValue={defaults?.address} />
       </div>
       <div className="field">
         <label htmlFor="role">Roolisi</label>

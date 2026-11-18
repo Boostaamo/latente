@@ -2,25 +2,24 @@
 title: "Tietosuojaseloste"
 description: "Miten Latente käsittelee verkkosivuston yhteydenottolomakkeella ja analytiikkaevästeillä kerättäviä tietoja."
 noindex: true
-updated: "2026-11-17"
+updated: "2026-11-18"
 ---
 
 <!--
   Konsernin tietosuojaselostepohja v0.1 (web-pohja), täytetty Latentelle 17.11.2026. Ei juristin tarkistama.
-  Yhteysosoite väliaikaisesti hannu@dimma.fi: vaihdetaan Latenten omaan osoitteeseen, kun latente.fi-posti toimii.
   Poista noindex, kun seloste on hyväksytty.
   Ennen kohdesuoraa ja taloyhtiösivuja (julkaisu 2) lisätään: julkiset lähteet (rakennustiedot, yritystietopalvelut), kohdesivujen käynnit.
 -->
 
 # Tietosuojaseloste
 
-Päivitetty: 17.11.2026
+Päivitetty: 18.11.2026
 
 ## Rekisterinpitäjä
 
 Latente Oy, Y-tunnus 3670012-1, Lampettikuja 6, 00750 Helsinki.
 
-Yhteyshenkilö tietosuoja-asioissa: Hannu Savela, hannu@dimma.fi.
+Yhteyshenkilö tietosuoja-asioissa: Hannu Savela, hannu.savela@latente.fi.
 
 Tämä seloste koskee sivustoa latente.fi.
 
@@ -57,7 +56,7 @@ Säilytämme yhteydenoton tiedot enintään 24 kuukautta viimeisestä yhteydenot
 
 ## Oikeutesi
 
-Sinulla on oikeus tarkastaa, oikaista ja poistaa tietosi, rajoittaa ja vastustaa niiden käsittelyä sekä siirtää tiedot järjestelmästä toiseen. Voit myös peruuttaa suostumuksesi. Ota yhteyttä: hannu@dimma.fi.
+Sinulla on oikeus tarkastaa, oikaista ja poistaa tietosi, rajoittaa ja vastustaa niiden käsittelyä sekä siirtää tiedot järjestelmästä toiseen. Voit myös peruuttaa suostumuksesi. Ota yhteyttä: hannu.savela@latente.fi.
 
 Jos katsot, että tietojesi käsittely rikkoo tietosuojalainsäädäntöä, voit tehdä valituksen tietosuojavaltuutetun toimistolle ([tietosuoja.fi](https://tietosuoja.fi)).
 

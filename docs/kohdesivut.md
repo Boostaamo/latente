@@ -18,7 +18,14 @@ Datan tuottaa Latenten skripti `Kiinteistöhaku/skriptit/taloyhtio_json.py` Driv
 - Tuntematon tunniste antaa tavallisen 404-sivun (`dynamicParams = false`).
 - Kartoituspyyntö kulkee sivuston tavallisen liidilomakkeen kautta (`source = taloyhtio/<tunniste>`).
 
+## Käyntien kirjaus
+Ohje: [`docs/kohdesivu-tapahtumat.md`](kohdesivu-tapahtumat.md). Toteutus:
+- `components/KohdeTapahtumat.tsx` (avaus, luettu, laskelma) ja `components/JakoPainike.tsx` (jako), lähetys `lib/kohdeTapahtumaSelain.ts`. Laskuri ilmoittaa käytöstä `window.dispatchEvent(new Event("kohde:laskelma"))`.
+- `app/api/tapahtuma/route.ts` tarkistaa ja tallentaa, `app/api/lead/route.ts` kirjaa `yhteydenotto`.
+- `lib/tapahtumat.ts`: Upstash Redis REST (ei kirjastoa), lista `tapahtumat:YYYY-MM`, vanhenee 13 kk. Raja 300 tapahtumaa/kohde/vrk.
+- `GET /api/tapahtuma/vienti?alkaen=YYYY-MM-DD` ja `Authorization: Bearer <VIENTI_AVAIN>`.
+- Ilman Redis-muuttujia tapahtumia ei tallenneta (sivu toimii normaalisti).
+
 ## Ei tässä vaiheessa
 - Interaktiivinen säästölaskuri: Bistek toteuttaa (Hannu 17.11.2026).
-- Käyntien kirjaus myyntiputkeen (kiinnostuspisteet): ohje kehittäjälle on tiedostossa [`docs/kohdesivu-tapahtumat.md`](kohdesivu-tapahtumat.md) (sama kuin Latenten Kohdesivusto-kansiossa). Ei evästeitä, ei IP:tä, vain kohde, tapahtuma, aika ja oma. Kirjauksen jälkeen `tietosuoja`-teksti päivitetään Hannun hyväksymäksi.
 - Säästöt näytetään arvioina (Hannu 17.11.2026).

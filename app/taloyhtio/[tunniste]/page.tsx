@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import JakoPainike from "@/components/JakoPainike";
+import KohdeTapahtumat from "@/components/KohdeTapahtumat";
 import LeadForm from "@/components/LeadForm";
 import { getTaloyhtio, kohdeTekstit as T, laskelma, listTunnisteet, tayta } from "@/lib/taloyhtiot";
 
@@ -46,6 +48,7 @@ export default async function TaloyhtioPage({ params }: Props) {
 
   return (
     <div className="kohde">
+      <KohdeTapahtumat tunniste={t.tunniste} />
       <section className="band dark kohde-hero">
         <div className="in kohde-hero-grid">
           <div className="kohde-hero-teksti">
@@ -60,6 +63,7 @@ export default async function TaloyhtioPage({ params }: Props) {
             <p className="muted kohde-pieni">
               Hinta-arvio {eur(l.hintaAlv, 1000)} (sis. alv 25,5 %). Vastike lainan aikana ({t.arvio.laina_v} v, korko {nf1.format(t.arvio.korko * 100)} %), lainan jälkeen {kk(r60.lainanJalkeen)}.
             </p>
+            <JakoPainike tunniste={t.tunniste} teksti={T.jako_nappi} kopioitu={T.jako_kopioitu} />
           </div>
           {t.kuva && (
             <figure className="kohde-kuva">

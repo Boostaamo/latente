@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { listTunnisteet } from "@/lib/taloyhtiot";
+import { tallenna } from "@/lib/tapahtumat";
 
 export const runtime = "nodejs";
 
@@ -128,6 +130,10 @@ export async function POST(req: Request) {
     console.error("Liidin lähetys epäonnistui (verkkovirhe).");
     return NextResponse.json({ ok: false, error: "Lähetys epäonnistui. Yritä myöhemmin uudelleen." }, { status: 502 });
   }
+
+  // Kohdesivun kartoituspyyntö kirjataan tapahtumaksi ilman lomakkeen henkilötietoja (docs/kohdesivu-tapahtumat.md).
+  const kohde = lead.source.startsWith("taloyhtio/") ? lead.source.slice("taloyhtio/".length) : "";
+  if (kohde && listTunnisteet().includes(kohde)) await tallenna(kohde, "yhteydenotto");
 
   return NextResponse.json({ ok: true });
 }

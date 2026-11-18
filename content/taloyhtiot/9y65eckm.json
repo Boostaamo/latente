@@ -1,0 +1,35 @@
+{
+  "tunniste": "9y65eckm",
+  "nimi": "As Oy Keinulaudantie 5",
+  "alue": "Kontula, Helsinki",
+  "osoite": "Keinulaudantie 5, 00940 Helsinki",
+  "paivitetty": "2026-11-17",
+  "talo": {
+    "valmistunut": 1966,
+    "asunnot": 91,
+    "kerroksia": 9,
+    "kerrosala_m2": 7676,
+    "asuinala_m2_arvio": 6140,
+    "lammitys": "Kaukolämpö (Helen)",
+    "ilmanvaihto": "Todennäköisesti koneellinen poisto",
+    "kulutus_mwh_v": 1267,
+    "kustannus_eur_v": 138900,
+    "lammitystarveluku": 3436,
+    "hellepaivat_v": 14.9
+  },
+  "arvio": {
+    "nettosaasto_eur_v": 37200,
+    "hinta_alv0": 271000,
+    "alv": 0.255,
+    "laina_v": 15,
+    "korko": 0.04,
+    "viilennys_eur_asunto_alv0": 3300
+  },
+  "kuva": {
+    "src": "/taloyhtio/kuvat/9y65eckm.jpg",
+    "alt": "Ilmakuva kerrostalosta ylhäältä. Katolla näkyvät poistoilmapuhaltimet.",
+    "teksti": "Ilmakuva 2026. Katolla näkyvät poistoilmapuhaltimet, joiden yhteyteen laite asennettaisiin.",
+    "lahde": "Helsingin kaupunki, ortoilmakuva 2026, CC BY 4.0"
+  },
+  "lahteet": "Helsingin rakennusrekisteri, PRH:n yritystiedot, Helenin hinnasto 1.7.2026 ja Ilmatieteen laitoksen havainnot 2016–2025. Kulutus on arvioitu rakennuksen koon ja iän perusteella."
+}

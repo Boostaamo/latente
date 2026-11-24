@@ -49,7 +49,7 @@ Emme myy tietoja emmekä luovuta niitä kolmansille osapuolille markkinointiin.
 Käytämme seuraavia palveluntarjoajia, jotka käsittelevät tietoja puolestamme:
 
 - Vercel Inc. (sivuston ylläpito)
-- Upstash Inc. (kohdesivujen käyttötapahtumien tallennus)
+- Supabase Inc. (kohdesivujen käyttötapahtumien tallennus, palvelin EU:ssa)
 - Google (lomakkeen välitys ja sähköposti sekä Google Analytics)
 
 Palveluntarjoajat voivat käsitellä tietoja myös EU:n ja ETA:n ulkopuolella, erityisesti Yhdysvalloissa. Siirrot perustuvat EU:n ja Yhdysvaltojen väliseen tietosuojakehykseen (EU-U.S. Data Privacy Framework) tai Euroopan komission hyväksymiin vakiosopimuslausekkeisiin.

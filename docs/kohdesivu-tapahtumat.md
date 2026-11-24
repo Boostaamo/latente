@@ -88,10 +88,12 @@ Lomake lähettää jo nyt reitille `app/api/lead/route.ts` kentän `source: "tal
 
 ## 5. Tallennus
 
-- Käytä Vercelin Marketplacen tietokantaa: Upstash Redis tai Neon Postgres. Kumpikin käy. Lisää riippuvuus vain sen kirjastoon (`@upstash/redis` tai `@neondatabase/serverless`) ja kirjaa peruste PR:n kuvaukseen.
-- Säilytysaika **12 kuukautta**. Redisissä: yksi lista kuukautta kohden (`tapahtumat:2026-11`) ja TTL 13 kk. Postgresissa: Vercel Cron kerran vuorokaudessa poistaa yli 12 kk vanhat rivit.
-- Yhteystiedot tietokantaan ympäristömuuttujina (Vercelin integraatio lisää ne). Ei salaisuuksia repoon.
-- Tuotantoympäristön tietokannan ja ympäristömuuttujien lisääminen Verceliin vaatii Hannun luvan (repon `CLAUDE.md`). Tee ensin esikatseluympäristöön.
+Päätetty (Hannu 18.11.2026): sama arkkitehtuuri kuin konsernin kartoituspalvelussa, eli **Vercel ja Supabase EU:ssa**.
+- Latenten tapahtumat omassa Supabase-projektissa (EU-alue), koska rekisterinpitäjä on Latente Oy.
+- Taulu, kirjausfunktio ja 12 kk poisto (pg_cron): `supabase/migrations/20261118_kohdesivu_tapahtumat.sql`.
+- Sivusto käyttää Supabasen REST-rajapintaa palvelinavaimella (`SUPABASE_SERVICE_ROLE_KEY`). Ei uutta kirjastoa. Julkinen anon-avain ei pääse tauluun (RLS päällä, oikeudet poistettu).
+- Yhteystiedot ympäristömuuttujina (Vercelin Supabase-integraatio lisää ne). Ei salaisuuksia repoon.
+- Tuotantoympäristön muuttujat vaativat Hannun luvan (repon `CLAUDE.md`). Tee ensin esikatseluympäristöön.
 
 ## 6. Vienti Latentelle: `app/api/tapahtuma/vienti/route.ts`
 
@@ -127,6 +129,6 @@ Tietosuojaselosteeseen lisätään sama kuvaus (rekisterinpitäjä Latente Oy, p
 
 ## 9. Avoimet
 
-1. Tietokannan valinta (Upstash Redis vai Neon Postgres): kehittäjä ehdottaa, Hannu hyväksyy Vercelin tuotantoasetukset.
+1. Tietokanta: Supabase EU (päätetty 18.11.2026).
 2. Tietosuojatekstin hyväksyntä (kohta 7).
 3. Vercelin omien palvelinlokien säilytysaika tarkistetaan. Lokit voivat sisältää IP-osoitteen, vaikka sovellus ei tallenna sitä.

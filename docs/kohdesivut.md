@@ -22,9 +22,9 @@ Datan tuottaa Latenten skripti `Kiinteistöhaku/skriptit/taloyhtio_json.py` Driv
 Ohje: [`docs/kohdesivu-tapahtumat.md`](kohdesivu-tapahtumat.md). Toteutus:
 - `components/KohdeTapahtumat.tsx` (avaus, luettu, laskelma) ja `components/JakoPainike.tsx` (jako), lähetys `lib/kohdeTapahtumaSelain.ts`. Laskuri ilmoittaa käytöstä `window.dispatchEvent(new Event("kohde:laskelma"))`.
 - `app/api/tapahtuma/route.ts` tarkistaa ja tallentaa, `app/api/lead/route.ts` kirjaa `yhteydenotto`.
-- `lib/tapahtumat.ts`: Upstash Redis REST (ei kirjastoa), lista `tapahtumat:YYYY-MM`, vanhenee 13 kk. Raja 300 tapahtumaa/kohde/vrk.
+- `lib/tapahtumat.ts`: Supabase (EU) REST-rajapinnan kautta (ei kirjastoa), kuten konsernin muut palvelut. Taulu, kirjausfunktio (raja 300 tapahtumaa/kohde/vrk) ja 12 kk poisto pg_cronilla: `supabase/migrations/20261118_kohdesivu_tapahtumat.sql`. Latenten tiedot omassa Supabase-projektissaan, koska rekisterinpitäjä on Latente Oy.
 - `GET /api/tapahtuma/vienti?alkaen=YYYY-MM-DD` ja `Authorization: Bearer <VIENTI_AVAIN>`.
-- Ilman Redis-muuttujia tapahtumia ei tallenneta (sivu toimii normaalisti).
+- Ilman Supabase-muuttujia tapahtumia ei tallenneta (sivu toimii normaalisti).
 
 ## Ei tässä vaiheessa
 - Interaktiivinen säästölaskuri: Bistek toteuttaa (Hannu 17.11.2026).
